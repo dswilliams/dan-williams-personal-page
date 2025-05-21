@@ -15,6 +15,7 @@ interface ProjectProps {
   testimonial2?: string;
   testimonialAuthor2?: string;
   links?: Array<{url: string; label: string; type: "podcast" | "document" | "app"}>;
+  featured?: boolean;
 }
 
 const ProjectCard = ({
@@ -29,10 +30,11 @@ const ProjectCard = ({
   testimonialAuthor,
   testimonial2,
   testimonialAuthor2,
-  links
+  links,
+  featured
 }: ProjectProps) => {
   return (
-    <div className="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
+    <div className={`project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col h-full ${featured ? 'col-span-full' : ''}`}>
       <div 
         className="p-4 text-white flex items-center relative"
         style={{
@@ -65,10 +67,52 @@ const ProjectCard = ({
           </div>
         </div>
         
-        <div className="border border-dashed border-gray-300 rounded-md p-4 text-center text-gray-500 my-4">
-          <p className="text-sm">Project Screenshot</p>
-          <p className="text-xs opacity-50">(Placeholder)</p>
+        <div className={`grid ${featured ? 'md:grid-cols-2' : 'grid-cols-1'} gap-4`}>
+          <div className="border border-dashed border-gray-300 rounded-md p-4 text-center text-gray-500">
+            <p className="text-sm">Project Screenshot</p>
+            <p className="text-xs opacity-50">(Placeholder)</p>
+          </div>
+          
+          {featured && (
+            <div className="space-y-4">
+              {testimonial && (
+                <div className="italic text-sm bg-gray-50 p-4 rounded border-l-2 border-nouveau-purple">
+                  "{testimonial}"
+                  {testimonialAuthor && (
+                    <div className="mt-2 text-right text-xs text-gray-600">- {testimonialAuthor}</div>
+                  )}
+                </div>
+              )}
+              
+              {testimonial2 && (
+                <div className="italic text-sm bg-gray-50 p-4 rounded border-l-2 border-nouveau-orange">
+                  "{testimonial2}"
+                  {testimonialAuthor2 && (
+                    <div className="mt-2 text-right text-xs text-gray-600">- {testimonialAuthor2}</div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
         </div>
+        
+        {!featured && testimonial && (
+          <div className="mt-4 italic text-sm bg-gray-50 p-4 rounded border-l-2 border-nouveau-purple">
+            "{testimonial}"
+            {testimonialAuthor && (
+              <div className="mt-2 text-right text-xs text-gray-600">- {testimonialAuthor}</div>
+            )}
+          </div>
+        )}
+        
+        {!featured && testimonial2 && (
+          <div className="mt-4 italic text-sm bg-gray-50 p-4 rounded border-l-2 border-nouveau-orange">
+            "{testimonial2}"
+            {testimonialAuthor2 && (
+              <div className="mt-2 text-right text-xs text-gray-600">- {testimonialAuthor2}</div>
+            )}
+          </div>
+        )}
         
         {links && links.length > 0 && (
           <div className="mt-4 grid grid-cols-2 gap-2">
@@ -94,24 +138,6 @@ const ProjectCard = ({
             ))}
           </div>
         )}
-        
-        {testimonial && (
-          <div className="mt-4 italic text-sm bg-gray-50 p-4 rounded border-l-2 border-nouveau-purple">
-            "{testimonial}"
-            {testimonialAuthor && (
-              <div className="mt-2 text-right text-xs text-gray-600">- {testimonialAuthor}</div>
-            )}
-          </div>
-        )}
-        
-        {testimonial2 && (
-          <div className="mt-4 italic text-sm bg-gray-50 p-4 rounded border-l-2 border-nouveau-orange">
-            "{testimonial2}"
-            {testimonialAuthor2 && (
-              <div className="mt-2 text-right text-xs text-gray-600">- {testimonialAuthor2}</div>
-            )}
-          </div>
-        )}
       </div>
     </div>
   );
@@ -129,7 +155,7 @@ const Projects = () => {
           to solve real problems.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <ProjectCard
             title="Research with Focus: PMs who Build"
             description="Exploring the differences between conversational LLMs and AI IDEs through hands-on testing & prototyping"
@@ -148,6 +174,7 @@ const Projects = () => {
               { url: "#", label: "AI Tools Landscape Podcast", type: "podcast" },
               { url: "#", label: "AI Tools Landscape Doc", type: "document" }
             ]}
+            featured={true}
           />
           
           <ProjectCard
