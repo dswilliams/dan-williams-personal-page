@@ -9,6 +9,7 @@ interface ProjectProps {
   problem: string;
   solution: string;
   icon: React.ReactNode;
+  bgImage: string;
   testimonial?: string;
   testimonialAuthor?: string;
 }
@@ -20,12 +21,20 @@ const ProjectCard = ({
   problem,
   solution,
   icon,
+  bgImage,
   testimonial,
   testimonialAuthor
 }: ProjectProps) => {
   return (
     <div className="project-card bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 flex flex-col h-full">
-      <div className="bg-gradient-to-r from-nouveau-purple to-nouveau-vividPurple p-4 text-white flex items-center">
+      <div 
+        className="p-4 text-white flex items-center relative"
+        style={{
+          background: `linear-gradient(to right, rgba(139, 92, 246, 0.9), rgba(249, 115, 22, 0.9)), url(${bgImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
         <div className="bg-white bg-opacity-20 rounded-full p-2 mr-3">
           {icon}
         </div>
@@ -72,7 +81,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-playfair font-bold text-center mb-4 relative art-nouveau-border pb-6">
+        <h2 className="text-4xl font-playfair font-bold text-center mb-4 relative">
           AI Projects
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
@@ -88,6 +97,7 @@ const Projects = () => {
             problem="Product managers need practical AI knowledge"
             solution="Created self-paced AI learning courses and shared them with PMs in my network (10-15)"
             icon={<Brain size={24} className="text-white" />}
+            bgImage="https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=1974&auto=format&fit=crop"
             testimonial="Thanks Dan! This is all great and exactly the sort of thing I need for AI."
             testimonialAuthor="Former PM co-worker"
           />
@@ -99,6 +109,7 @@ const Projects = () => {
             problem="What gross income must I make for my expenses/budget?"
             solution="Based on the amount a user wants to spend each month, determine the necessary gross income"
             icon={<Code size={24} className="text-white" />}
+            bgImage="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2011&auto=format&fit=crop"
           />
           
           <ProjectCard
@@ -108,6 +119,7 @@ const Projects = () => {
             problem="Unclear on next steps in any situation, and unmotivated"
             solution="Provide motivation, action items and historical reference based on a user's current sentiment"
             icon={<Lightbulb size={24} className="text-white" />}
+            bgImage="https://images.unsplash.com/photo-1583964699889-6b51214c7749?q=80&w=1974&auto=format&fit=crop"
           />
           
           <ProjectCard
@@ -117,6 +129,7 @@ const Projects = () => {
             problem="What is important for me to focus on this week? How should I prepare?"
             solution="Based on key calendar event indicators, determine priority events and how to prep"
             icon={<Calendar size={24} className="text-white" />}
+            bgImage="https://images.unsplash.com/photo-1506784365847-bbad939e9335?q=80&w=2068&auto=format&fit=crop"
           />
         </div>
       </div>
