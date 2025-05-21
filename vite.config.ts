@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 
 // https://vitejs.dev/config/
@@ -14,8 +14,15 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
-    // Copy the 404.html to the dist folder during build
+    // Fix for GitHub Pages MIME type issues
     rollupOptions: {
+      output: {
+        // This ensures ES modules work correctly on GitHub Pages
+        format: 'es',
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]'
+      },
       input: {
         main: path.resolve(__dirname, 'index.html'),
       },
