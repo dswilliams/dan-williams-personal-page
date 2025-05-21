@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Williams | Redirect</title>
+  <script type="text/javascript">
+    // Handles GitHub Pages SPA routing - redirects all requests to index.html
+    (function() {
+      // Set the repository name explicitly
+      const repo = '/dan-williams-personal-page';
+      
+      // Rebuild the URL
+      const l = window.location;
+      const pathSegments = l.pathname.replace(repo, '').split('/').filter(Boolean);
+      
+      const redirectPath = 
+        l.protocol + '//' + 
+        l.hostname + 
+        (l.port ? ':' + l.port : '') + 
+        repo + 
+        '/?' + 
+        (pathSegments.length > 0 ? 'path=' + pathSegments.join('/') : '') + 
+        (l.search ? '&' + l.search.slice(1) : '') + 
+        l.hash;
+      
+      window.location.replace(redirectPath);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
