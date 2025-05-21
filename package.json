@@ -1,7 +1,8 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "dan-williams-personal-page",
+  "version": "1.0.0",
+  "homepage": "https://dswilliams.github.io/dan-williams-personal-page",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
