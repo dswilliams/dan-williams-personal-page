@@ -7,7 +7,7 @@ const Header = () => {
     <header className="relative pt-10 pb-16 mb-10 overflow-hidden">
       {/* Art Nouveau decorative background */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 z-0">
-        <div className="w-full h-full bg-[url('data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"%3E%3Cpath d=\"M0,50 C25,0 75,100 100,50 S75,0 50,50 S25,100 0,50\" stroke=\"%239b87f5\" fill=\"none\" stroke-width=\"1\"%2F%3E%3C%2Fsvg%3E')] bg-repeat"></div>
+        <div className="w-full h-full bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Cpath%20d%3D%22M0%2C50%20C25%2C0%2075%2C100%20100%2C50%20S75%2C0%2050%2C50%20S25%2C100%200%2C50%22%20stroke%3D%22%239b87f5%22%20fill%3D%22none%22%20stroke-width%3D%221%22%2F%3E%3C%2Fsvg%3E')] bg-repeat"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
