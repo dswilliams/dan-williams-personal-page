@@ -12,6 +12,8 @@ interface ProjectProps {
   bgImage: string;
   testimonial?: string;
   testimonialAuthor?: string;
+  testimonial2?: string;
+  testimonialAuthor2?: string;
   links?: Array<{url: string; label: string; type: "podcast" | "document" | "app"}>;
 }
 
@@ -25,6 +27,8 @@ const ProjectCard = ({
   bgImage,
   testimonial,
   testimonialAuthor,
+  testimonial2,
+  testimonialAuthor2,
   links
 }: ProjectProps) => {
   return (
@@ -99,6 +103,15 @@ const ProjectCard = ({
             )}
           </div>
         )}
+        
+        {testimonial2 && (
+          <div className="mt-4 italic text-sm bg-gray-50 p-4 rounded border-l-2 border-nouveau-orange">
+            "{testimonial2}"
+            {testimonialAuthor2 && (
+              <div className="mt-2 text-right text-xs text-gray-600">- {testimonialAuthor2}</div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -127,6 +140,8 @@ const Projects = () => {
             bgImage="https://images.unsplash.com/photo-1516110833967-0b5716ca1387?q=80&w=1974&auto=format&fit=crop"
             testimonial="Thanks Dan! This is all great and exactly the sort of thing I need for AI."
             testimonialAuthor="Former PM co-worker"
+            testimonial2="Whoa, thanks for all of this!"
+            testimonialAuthor2="Former Eng co-worker"
             links={[
               { url: "#", label: "AI Study Guide Podcast", type: "podcast" },
               { url: "#", label: "AI Study Guide Doc", type: "document" },
